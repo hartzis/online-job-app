@@ -22,9 +22,13 @@ app.get('/', mainController.getIndex);
 // displays a list of applicants
 app.get('/applicants', mainController.getApplicants);
 
-app.get('/application', mainController.getApplication)
+// delete applicants/:id
+app.post('/applicants/:id/delete', mainController.postApplicantsDeleteById)
 
 // creates and applicant
+app.get('/application', mainController.getApplication)
+
+
 app.post('/applicant', mainController.postApplicant);
 
 app.get('/success', mainController.getSuccess)

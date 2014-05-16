@@ -54,7 +54,17 @@ var routes = {
         }
         console.log(req.cookies.get('name'))
         res.send('Please follow proper applicant submital process')
-
+    },
+    postApplicantsDeleteById: function(req, res) {
+        var id = req.params.id;
+        console.log('Attempting to delete this user-', id);
+        applicantsModel.findAndDeleteApplicantById(id,
+            function(success) {
+                res.send({
+                    success: success,
+                    id: id
+                });
+            })
     }
 }
 

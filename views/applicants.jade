@@ -6,4 +6,26 @@ block content
       h1 Applicants
       ul#applications.list-unstyled
         for applicant in applicants
-          li= applicant.name
+          li.applicant(data-id="#{applicant._id}")
+            .row
+              .col-xs-6
+                p Name: #{applicant.name}
+              .col-xs-6
+                p Years of Experience: #{applicant.exp}
+            .row
+              .col-xs-6
+                p Bio: #{applicant.bio}
+              .col-xs-6
+                p Skills:
+                ul.skills
+                  for skill in applicant.skills
+                    li.skill= skill
+            .row
+              .col-xs-10
+                p Why you want to work here:
+                p= applicant.why
+              .col-xs-2
+                button.delete-applicant.btn.btn-danger.btn-sm(data-id="#{applicant._id}") Delete
+
+block scripts
+  script(src="/javascripts/applicants.js")

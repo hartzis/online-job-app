@@ -33,5 +33,15 @@ module.exports = {
             console.log(applicants);
             cb(applicants);
         })
+    },
+    findAndDeleteApplicantById: function(id, cb) {
+        Applicant.findById(id).remove().exec(function(err, data) {
+            if (err) {
+                console.log(err)
+                cb(err);
+                return;
+            }
+            cb('success');
+        })
     }
 };
